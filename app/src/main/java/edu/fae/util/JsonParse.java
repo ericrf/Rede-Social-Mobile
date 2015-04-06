@@ -3,6 +3,8 @@ package edu.fae.util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+
 /**
  * 
  * @author Robson
@@ -10,5 +12,5 @@ import org.json.JSONObject;
  * @param <E>
  */
 public interface JsonParse<E> {
-	public E parse(JSONObject json)throws JSONException;
+	public E parse(JSONObject json) throws JSONException;
 }

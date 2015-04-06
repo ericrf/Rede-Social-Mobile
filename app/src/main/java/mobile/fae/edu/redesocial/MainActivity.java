@@ -1,12 +1,18 @@
 package mobile.fae.edu.redesocial;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+
+import edu.fae.util.http.JsonResultHandler;
+import edu.fae.util.http.PostAsyncTask;
+import edu.fae.util.http.PostRequest;
+import mobile.fae.edu.redesocial.JsonResultHandler.LoginJsonResultHandler;
+import mobile.fae.edu.redesocial.util.Constants;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,26 +20,33 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void cadastrarUsuario(View v){
+        String nome = ((EditText) findViewById(R.id.edit_text_cadastro_nome)).getText().toString();
+        String email = ((EditText) findViewById(R.id.edit_text_cadastro_email)).getText().toString();
+        String senha = ((EditText) findViewById(R.id.edit_text_cadastro_senha)).getText().toString();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        JsonResultHandler handler = new LoginJsonResultHandler(this);
+        PostAsyncTask task = new PostAsyncTask(handler, this);
+
+        PostRequest request = new PostRequest(Constants.CADASTRO_SERVICE_URL);
+        request.addParam("nome", nome);
+        request.addParam("email", email);
+        request.addParam("senha", senha);
+
+        task.execute(request);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void doLogin(View v){
+        String email = ((EditText) findViewById(R.id.edit_text_login_username)).getText().toString();
+        String senha = ((EditText) findViewById(R.id.edit_text_login_password)).getText().toString();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        JsonResultHandler handler = new LoginJsonResultHandler(this);
+        PostAsyncTask task = new PostAsyncTask(handler, this);
 
-        return super.onOptionsItemSelected(item);
+        PostRequest request = new PostRequest(Constants.LOGIN_SERVICE_URL);
+        request.addParam("email", email);
+        request.addParam("senha", senha);
+
+        task.execute(request);
     }
 }
