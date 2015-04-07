@@ -7,12 +7,13 @@
         android:id="@+id/text_view_timeline_post_perfil_nome"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp" />
+        android:textSize="10sp"
+        android:text="nome"/>
 
     <TextView
         android:id="@+id/text_view_timeline_post_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp" >
-    </TextView>
+        android:textSize="20sp"
+        android:text="texto"/>
 </LinearLayout>
