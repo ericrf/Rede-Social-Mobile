@@ -1,9 +1,16 @@
 package mobile.fae.edu.redesocial;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import mobile.fae.edu.redesocial.adapter.ComentarioArrayAdapter;
+import mobile.fae.edu.redesocial.model.Post;
 
 
 public class PostDetailActivity extends ActionBarActivity {
@@ -12,28 +19,34 @@ public class PostDetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
-    }
 
+        Post post = (Post) getIntent().getExtras().get("post");
+
+        ((TextView) findViewById(R.id.text_view_post_detail_autor)).setText(post.getNomeAutor());
+        ((TextView) findViewById(R.id.text_view_post_detail_updatedAt)).setText(post.getUpdatedAt());
+        ((TextView) findViewById(R.id.text_view_post_detail_texto)).setText(post.getTexto());
+
+        ListView listView = (ListView) findViewById(R.id.list_view_detalhes_post_comentarios);
+        ComentarioArrayAdapter adapter = new ComentarioArrayAdapter(this);
+        adapter.addAll(post.getComentarios());
+        listView.setAdapter(adapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_post_detail, menu);
+        getMenuInflater().inflate(R.menu.menu_timeline, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_new_post) {
+            Intent intent = new Intent(this, ComentarioFormActivity.class);
+            intent.putExtra("postId", ((Post) getIntent().getExtras().get("post")).getId());
+            startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

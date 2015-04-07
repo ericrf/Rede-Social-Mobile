@@ -31,7 +31,8 @@
                 android:layout_width="0dp"
                 android:layout_weight=".40"
                 android:layout_height="wrap_content"
-                android:hint="Username" />
+                android:hint="Username"
+                android:text="email" />
 
             <EditText
                 android:id="@+id/edit_text_login_password"
@@ -39,7 +40,8 @@
                 android:layout_weight=".40"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="senha" />
 
             <Button
                 android:id="@+id/btn_login"

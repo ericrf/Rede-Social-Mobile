@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Enviar"
         android:id="@+id/button_post_form_enviar"
+        android:onClick="inserirPost"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

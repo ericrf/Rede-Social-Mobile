@@ -2,6 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="mobile.fae.edu.redesocial.PostFormActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item
+        android:id="@+id/action_new_comment"
+        app:showAsAction="ifRoom"
+        android:title="Novo Comentário"
+        android:icon="@drawable/content_new"/>
 </menu>

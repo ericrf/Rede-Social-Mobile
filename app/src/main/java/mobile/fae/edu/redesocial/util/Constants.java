@@ -10,4 +10,6 @@ public class Constants {
     public static final String CADASTRO_SERVICE_URL = HOST + "register/save.json";
     public static final String LOGIN_SERVICE_URL = HOST + "login/login.json";
     public static final String TIMELINE_SERVICE_URL = HOST + "stream/index.json";
+    public static final String POST_ADD_SERVICE_URL = HOST + "stream/create.json";
+    public static final String COMENTARIO_ADD_SERVICE_URL = HOST + "stream/createComentario.json";
 }

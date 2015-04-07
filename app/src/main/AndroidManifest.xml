@@ -26,6 +26,14 @@
             android:name=".PostFormActivity"
             android:label="@string/title_activity_post_form" >
         </activity>
+        <activity
+            android:name=".PostDetailActivity"
+            android:label="@string/title_activity_post_detail" >
+        </activity>
+        <activity
+            android:name=".ComentarioFormActivity"
+            android:label="@string/title_activity_comentario_form" >
+        </activity>
     </application>
 
 </manifest>

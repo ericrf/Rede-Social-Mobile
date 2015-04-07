@@ -4,14 +4,21 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_view_timeline_post_perfil_nome"
+        android:id="@+id/text_view_post_comentario_nome"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="14sp"
         android:text="nome"/>
 
     <TextView
-        android:id="@+id/text_view_timeline_post_texto"
+        android:id="@+id/text_view_post_comentario_updatedAt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:text="updateAt"/>
+
+    <TextView
+        android:id="@+id/text_view_post_comentario_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"

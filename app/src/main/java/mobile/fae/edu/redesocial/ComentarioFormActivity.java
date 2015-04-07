@@ -4,6 +4,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+
+import edu.fae.util.http.PostAsyncTask;
+import edu.fae.util.http.PostRequest;
+import mobile.fae.edu.redesocial.JsonResultHandler.InserirComentarioPostJsonResultHandler;
+import mobile.fae.edu.redesocial.util.Constants;
 
 
 public class ComentarioFormActivity extends ActionBarActivity {
@@ -14,26 +21,17 @@ public class ComentarioFormActivity extends ActionBarActivity {
         setContentView(R.layout.activity_comentario_form);
     }
 
+    public void inserirComentario(View view){
+        Long postId = (Long) getIntent().getExtras().get("postId");
+        String texto = ((EditText) findViewById(R.id.edit_text_comentario_form_texto)).getText().toString();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_comentario_form, menu);
-        return true;
-    }
+        InserirComentarioPostJsonResultHandler handler = new InserirComentarioPostJsonResultHandler(this);
+        PostAsyncTask task = new PostAsyncTask(handler, this);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        PostRequest request = new PostRequest(Constants.COMENTARIO_ADD_SERVICE_URL);
+        request.addParam("postId", postId);
+        request.addParam("texto", texto);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        task.execute(request);
     }
 }

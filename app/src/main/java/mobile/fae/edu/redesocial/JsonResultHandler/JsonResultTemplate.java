@@ -13,4 +13,6 @@ public abstract class JsonResultTemplate implements JsonResultHandler{
     public JsonResultTemplate(Context context){
         this.context = context;
     }
+
+
 }

@@ -1,21 +1,23 @@
 package mobile.fae.edu.redesocial.parser;
 
 import android.content.Context;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import mobile.fae.edu.redesocial.adapter.PostArrayAdapter;
+import mobile.fae.edu.redesocial.model.Post;
 
 /**
  * Created by Eric on 06/04/2015.
  */
 public class PostArrayParser {
     private Context context;
-    private PostArrayAdapter adapter;
+    private ArrayAdapter adapter;
 
-    public PostArrayParser(Context context, PostArrayAdapter adapter) {
+    public PostArrayParser(Context context, ArrayAdapter adapter) {
         this.context = context;
         this.adapter = adapter;
     }
